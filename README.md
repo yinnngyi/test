@@ -36,8 +36,10 @@ function getCookie(cname) {
 function checkCookie() {
   var user=getCookie("username");
   if (user != "") {
-    document.querySelectorAll("#cookieBox").style.display = 'none';
+  console.log('來過');
+      document.querySelectorAll("#cookieBox").style.display = 'none';
   } else {
+  console.log('第一次來');
       document.querySelectorAll("#cookieBox").style.display = 'block';
      user = prompt("Please enter your name:","");
      if (user != "" && user != null) {
