@@ -40,7 +40,6 @@ function checkCookie() {
       document.querySelectorAll("#cookieBox").style.display = 'none';
   } else {
       console.log('第一次來');
-     document.querySelectorAll("#cookieBox").style.display = 'block';
      user = prompt("Please enter your name:","");
      if (user != "" && user != null) {
        setCookie("username", user, 30);
