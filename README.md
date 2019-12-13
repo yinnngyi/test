@@ -1,9 +1,10 @@
-<p>為提升本網站的服務品質，本網站透過使用Cookies記錄及存取您的資訊，您可以點擊「拒絕」按鈕，選擇拒絕使用 Cookies 的設置，但可能會無法使用部份本網站個人化服務及部分功能。更多相關資訊請參閱<a href="/www" target="_blank">Cookies聲明</a>。</p>
+<div id="cookieBox" style="display:none;">
+  <p>為提升本網站的服務品質，本網站透過使用Cookies記錄及存取您的資訊，您可以點擊「拒絕」按鈕，選擇拒絕使用 Cookies 的設置，但可能會無法使用部份本網站個人化服務及部分功能。更多相關資訊請參閱<a href="/www" target="_blank">Cookies聲明</a>。</p>
 
 
-<button onclick="cookie_Agree();event.preventDefault();">同意</button>
-<button onclick="cookie_Disagree();event.preventDefault()">不同意</button>
-
+  <button onclick="cookie_Agree();event.preventDefault();">同意</button>
+  <button onclick="cookie_Disagree();event.preventDefault()">不同意</button>
+</div>
 <button onclick="clearAllCookie();">點我清除Cookie</button>
 
 
@@ -35,14 +36,21 @@ function getCookie(cname) {
 function checkCookie() {
   var user=getCookie("username");
   if (user != "") {
-    alert("Welcome again " + user);
+    document.querySelectorAll("#cookieBox").style.display = 'none';
   } else {
+      document.querySelectorAll("#cookieBox").style.display = 'block';
      user = prompt("Please enter your name:","");
      if (user != "" && user != null) {
        setCookie("username", user, 30);
      }
   }
 }
+
+
+
+
+
+
 
 function clearAllCookie() {
     document.cookie.split(";").forEach(function (c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
@@ -72,7 +80,7 @@ function clearAllCookie() {
     
 
 }
-//clearAllCookie();
+
 checkCookie();
 
 </script>
