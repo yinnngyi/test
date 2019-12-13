@@ -1,6 +1,6 @@
 <div onload="checkCookie()"></div>
 
-<button onclick="cookie_Agree();">點我清除Cookie</button>
+<button onclick="clearAllCookie();">點我清除Cookie</button>
 
 
 
