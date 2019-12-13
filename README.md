@@ -37,82 +37,82 @@ Your Pages site will use the layout and styles from the Jekyll theme you have se
 Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
 
 
-  
-<form>
-  Cookie Name: <input name="cName" type="text" /> 
-  Cookie Value: <input name="cValue" type="text" />
-  <input onclick="doCookieSetup(this.form.cName.value, this.form.cValue.value)"
-  type="button" value="設定" />
-</form>
-<form>
-  Cookie Name: <input name="cName" type="text" /> 
-  Cookie Value: <input name="cValue" type="text" />
-  <input onclick="this.form.cValue.value=getCookie(this.form.cName.value)"
-  type="button" value="查詢" />
-</form>
-<form>
-  Cookie Name: <input name="cName" type="text" />
-  <input onclick="delCookie(this.form.cName.value)" type="button" value="移除" />
-</form>
 
 
-
+<button onclick="cookie_Agree();">點我清除Cookie</button>
 
 
 
 <script>
+function setCookie(cname,cvalue,exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  var expires = "expires=" + d.toGMTString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
 
+function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
 
-//設定 Set cookie
-function doCookieSetup(name, value) {
-  console.log('123');
-  var expires = new Date();
-  //有效時間保存 2 天 2*24*60*60*1000
-  expires.setTime(expires.getTime() + 172800000);
-  document.cookie = name + "=" + escape(value) + ";expires=" + expires.toGMTString()
-    console.log('OK');
-};
-//查詢 Get cookie by name
-function getCookie(name) {
-  var arg = escape(name) + "=";
-  var nameLen = arg.length;
-  var cookieLen = document.cookie.length;
-  var i = 0;
-  while (i & lt; cookieLen) {
-    var j = i + nameLen;
-    if (document.cookie.substring(i, j) == arg) return getCookieValueByIndex(j);
-    i = document.cookie.indexOf(" ", i) + 1;
-    if (i == 0) break;
-  };
-  return null;
-};
+function checkCookie() {
+  var user=getCookie("username");
+  if (user != "") {
+    alert("Welcome again " + user);
+  } else {
+     user = prompt("Please enter your name:","");
+     if (user != "" && user != null) {
+       setCookie("username", user, 30);
+     }
+  }
+}
 
-function getCookieValueByIndex(startIndex) {
-  var endIndex = document.cookie.indexOf(";", startIndex);
-  if (endIndex == -1) endIndex = document.cookie.length;
-  return unescape(document.cookie.substring(startIndex, endIndex));
-};
+function clearAllCookie() {
+    ////alert('123');
+    //var keys = document.cookie.match(/[^ =;]+(?=\=)/g);
+    //if (keys) {
+    //    for (var i = keys.length; i--;)
+    //    document.cookie = keys[i] + '=0;expires=' + new Date(0).toUTCString()+'; path=/' + domain;
+    //}
+    document.cookie.split(";").forEach(function (c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
+    var cookies = document.cookie.split(";");
+    var domain = '.' + location.host;
+    var TSDomain ='.transcend-info.com';
+    console.log(cookies);
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=" + new Date().toUTCString() + "; domain=" + domain + "; path=/";
+        document.cookie = name + "=;expires=" + new Date().toUTCString() + "; domain=" + TSDomain + "; path=/";
+    }
+    if (cookies.length > 0) {
+        
+        console.log(cookies);
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i];
+            var eqPos = cookie.indexOf("=");
+            var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+            document.cookie = name + "=;expires=" + new Date().toUTCString() + "; domain=" + domain + "; path=/";
+            document.cookie = name + "=;expires=" + new Date().toUTCString() + "; domain=" + TSDomain + "; path=/";
+        }
+    }
 
-//刪除 Delete cookie entry
-function delCookie(name) {
-  var exp = new Date();
-  exp.setTime(exp.getTime() - 1);
-  var cval = getCookie(name);
-  document.cookie = escape(name) + "=" + cval + "; expires=" + exp.toGMTString();
-};
-function listCookie() {
-  document.writeln("<table>");
-  document.writeln("<tr><th>Name<th>Value");
-  cookieArray = document.cookie.split(";");
-  for (var i = 0; i < cookieArray.length; i++) {
-    thisCookie = cookieArray[i].split("=");
-    cName = unescape(thisCookie[0]);
-    cValue = unescape(thisCookie[1]);
-    document.writeln("<tr><td>" + cName + "</td><td>" + cValue + "</td>");
-  };
-  document.writeln("</table>");
-};
+    
 
-listCookie();
+}
+//clearAllCookie();
 
 </script>
