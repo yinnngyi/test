@@ -73,10 +73,12 @@ listCookie();
 
 //設定 Set cookie
 function doCookieSetup(name, value) {
+  console.log('123');
   var expires = new Date();
   //有效時間保存 2 天 2*24*60*60*1000
   expires.setTime(expires.getTime() + 172800000);
   document.cookie = name + "=" + escape(value) + ";expires=" + expires.toGMTString()
+    console.log('OK');
 }
 //查詢 Get cookie by name
 function getCookie(name) {
