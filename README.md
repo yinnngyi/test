@@ -61,9 +61,7 @@ Having trouble with Pages? Check out our [documentation](https://help.github.com
   <input onclick="delCookie(this.form.cName.value)" type="button" value="移除" />
 </form>
 
-<script>
-listCookie();
-</script>
+
 
 
 
@@ -121,6 +119,6 @@ function listCookie() {
   document.writeln("</table>");
 }
 
-
+listCookie();
 
 </script>
