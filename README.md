@@ -1,4 +1,4 @@
-<div onload="checkCookie()"></div>
+
 
 <button onclick="clearAllCookie();">點我清除Cookie</button>
 
@@ -75,5 +75,6 @@ function clearAllCookie() {
 
 }
 //clearAllCookie();
+checkCookie();
 
 </script>
