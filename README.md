@@ -37,12 +37,6 @@ Your Pages site will use the layout and styles from the Jekyll theme you have se
 Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
 
 
-<script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
-  
-  
   
 <form>
   Cookie Name: <input name="cName" type="text" /> 
@@ -77,7 +71,7 @@ function doCookieSetup(name, value) {
   expires.setTime(expires.getTime() + 172800000);
   document.cookie = name + "=" + escape(value) + ";expires=" + expires.toGMTString()
     console.log('OK');
-}
+};
 //查詢 Get cookie by name
 function getCookie(name) {
   var arg = escape(name) + "=";
@@ -89,15 +83,15 @@ function getCookie(name) {
     if (document.cookie.substring(i, j) == arg) return getCookieValueByIndex(j);
     i = document.cookie.indexOf(" ", i) + 1;
     if (i == 0) break;
-  }
+  };
   return null;
-}
+};
 
 function getCookieValueByIndex(startIndex) {
   var endIndex = document.cookie.indexOf(";", startIndex);
   if (endIndex == -1) endIndex = document.cookie.length;
   return unescape(document.cookie.substring(startIndex, endIndex));
-}
+};
 
 //刪除 Delete cookie entry
 function delCookie(name) {
@@ -105,7 +99,7 @@ function delCookie(name) {
   exp.setTime(exp.getTime() - 1);
   var cval = getCookie(name);
   document.cookie = escape(name) + "=" + cval + "; expires=" + exp.toGMTString();
-}
+};
 function listCookie() {
   document.writeln("<table>");
   document.writeln("<tr><th>Name<th>Value");
@@ -115,9 +109,9 @@ function listCookie() {
     cName = unescape(thisCookie[0]);
     cValue = unescape(thisCookie[1]);
     document.writeln("<tr><td>" + cName + "</td><td>" + cValue + "</td>");
-  }
+  };
   document.writeln("</table>");
-}
+};
 
 listCookie();
 
