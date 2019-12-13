@@ -1,4 +1,8 @@
+<p>為提升本網站的服務品質，本網站透過使用Cookies記錄及存取您的資訊，您可以點擊「拒絕」按鈕，選擇拒絕使用 Cookies 的設置，但可能會無法使用部份本網站個人化服務及部分功能。更多相關資訊請參閱<a href="/www" target="_blank">Cookies聲明</a>。</p>
 
+
+<button onclick="cookie_Agree();event.preventDefault();">同意</button>
+<button onclick="cookie_Disagree();event.preventDefault()">不同意</button>
 
 <button onclick="clearAllCookie();">點我清除Cookie</button>
 
@@ -41,12 +45,6 @@ function checkCookie() {
 }
 
 function clearAllCookie() {
-    ////alert('123');
-    //var keys = document.cookie.match(/[^ =;]+(?=\=)/g);
-    //if (keys) {
-    //    for (var i = keys.length; i--;)
-    //    document.cookie = keys[i] + '=0;expires=' + new Date(0).toUTCString()+'; path=/' + domain;
-    //}
     document.cookie.split(";").forEach(function (c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
     var cookies = document.cookie.split(";");
     var domain = '.' + location.host;
