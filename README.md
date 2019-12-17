@@ -1,3 +1,7 @@
+<!-- Kerebro tracking code -->
+<!-- Paste this code right before the </body> tag on every page of your site. -->
+<script src="//kerebro.com/tracker/newtrack.js"></script>
+
 <div id="cookieBox">
   <p>為提升本網站的服務品質，本網站透過使用Cookies記錄及存取您的資訊，您可以點擊「拒絕」按鈕，選擇拒絕使用 Cookies 的設置，但可能會無法使用部份本網站個人化服務及部分功能。更多相關資訊請參閱<a href="/www" target="_blank">Cookies聲明</a>。</p>
 
